@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.io.*;
 
 public class Inventory {
 
@@ -31,6 +32,46 @@ public class Inventory {
         }
 
         return null;
+    }
+
+    public void saveInventory() {
+        try{
+
+            PrintWriter pw = new PrintWriter("inventory.txt");
+
+            for(Item item : items) {
+                pw.println(item.getName() + "," + item.getCategory() + "," + item.getLocation());
+
+            }
+
+            pw.close();
+            System.out.println("Inventory saved!");
+
+        } catch (IOException e) {
+            System.out.println("Error saving inventory.");
+        }
+    }
+
+    public void loadInventory() {
+        try{
+            BufferedReader br = new BufferedReader(new FileReader("inventory.txt"));
+
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+
+                if(parts.length==3) {
+                    Item item = new Item(parts[0], parts[1], parts[2]);
+                    items.add(item);
+                }
+            }
+
+            br.close();
+            
+        } catch (IOException e) {
+            System.out.println("No saved inventory found.");
+        }
     }
     
 }

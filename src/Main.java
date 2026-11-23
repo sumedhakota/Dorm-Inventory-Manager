@@ -7,6 +7,8 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Inventory inventory = new Inventory();
 
+        inventory.loadInventory();
+
         System.out.println("Hello! Welcome to the Dorm Inventory Manager!");
 
         String choice = "";
@@ -70,6 +72,7 @@ public class Main {
                 }
                 
             } else if (choice.equals("5")) {
+                inventory.saveInventory();
                 System.out.println("Goodbye!");
                 
             } else {

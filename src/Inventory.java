@@ -15,13 +15,20 @@ public class Inventory {
     }
 
     public void displayItems() {
-        for (int i =0; i<items.size(); i++) {
-            System.out.println(items.get(i).getName() + " - " + items.get(i).getCategory() + " - " + items.get(i).getLocation() + " - Quantity: " + items.get(i).getQuantity());
+        if(items.size()==0) {
+            System.out.println("No Items Found");
+        } else {
+            for (int i =0; i<items.size(); i++) {
+                System.out.println("Name: " + items.get(i).getName() + " - Category: " + items.get(i).getCategory() + " - Location: " + items.get(i).getLocation() + " - Quantity: " + items.get(i).getQuantity());
+            }
+
         }
+        
     }
 
     public void removeItem(Item item) {
         items.remove(item);
+   
     }
 
     public Item searchItem(String name) {
@@ -30,7 +37,7 @@ public class Inventory {
                 return item;
             }
         }
-
+        
         return null;
     }
 

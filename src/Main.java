@@ -60,6 +60,7 @@ public class Main {
                 
 
             } else if (choice.equals("3")) {
+                
                 System.out.println("Which item would you like to remove? Enter the name:");
                 String name = input.nextLine();
 
@@ -80,7 +81,7 @@ public class Main {
                 Item item = inventory.searchItem(name);
 
                 if(item!=null) {
-                    System.out.println(item.getName() + " - " + item.getCategory() + " - " + item.getLocation() + " - Quantity: " + item.getQuantity());
+                    System.out.println("Name: " + item.getName() + " - Category: "  + item.getCategory() + " - Location: "  + item.getLocation() + " - Quantity: " + item.getQuantity());
 
                 } else {
                     System.out.println("Item not found :( ");

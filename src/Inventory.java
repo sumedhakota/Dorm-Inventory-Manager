@@ -16,7 +16,7 @@ public class Inventory {
 
     public void displayItems() {
         for (int i =0; i<items.size(); i++) {
-            System.out.println(items.get(i).getName() + " - " + items.get(i).getCategory() + " - " + items.get(i).getLocation());
+            System.out.println(items.get(i).getName() + " - " + items.get(i).getCategory() + " - " + items.get(i).getLocation() + " - Quantity: " + items.get(i).getQuantity());
         }
     }
 
@@ -40,7 +40,7 @@ public class Inventory {
             PrintWriter pw = new PrintWriter("inventory.txt");
 
             for(Item item : items) {
-                pw.println(item.getName() + "," + item.getCategory() + "," + item.getLocation());
+                pw.println(item.getName() + "," + item.getCategory() + "," + item.getLocation() + "," + item.getQuantity());
 
             }
 
@@ -61,8 +61,9 @@ public class Inventory {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
 
-                if(parts.length==3) {
-                    Item item = new Item(parts[0], parts[1], parts[2]);
+                if(parts.length==4) {
+                    int quantity = Integer.parseInt(parts[3]);
+                    Item item = new Item(parts[0], parts[1], parts[2], quantity);
                     items.add(item);
                 }
             }

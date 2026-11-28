@@ -35,10 +35,25 @@ public class Main {
                 System.out.println("Enter the location of the item:");
                 String itemLoc = input.nextLine();
 
-                Item item = new Item(itemName, itemCat, itemLoc);
-                inventory.addItem(item);
+                System.out.println("Enter the quantity of the item:");
+                String num = input.nextLine();
+                int itemQuan=0;
 
-                System.out.println("Item added!");
+                try{
+                    itemQuan = Integer.parseInt(num);
+                    
+                    if(itemQuan <= 0) {
+                        throw new NumberFormatException("Invalid number. Enter a whole, positive number. Please try again.");
+                    } else {
+                        Item item = new Item(itemName, itemCat, itemLoc, itemQuan);
+                        inventory.addItem(item);
+
+                        System.out.println("Item added!");
+                    }
+
+                } catch(NumberFormatException e) {
+                    System.out.println("Invalid number. Enter a whole, positive number. Please try again.");
+                }
 
             } else if (choice.equals("2")) {
                 inventory.displayItems();
@@ -65,7 +80,7 @@ public class Main {
                 Item item = inventory.searchItem(name);
 
                 if(item!=null) {
-                    System.out.println(item.getName() + " - " + item.getCategory() + " - " + item.getLocation());
+                    System.out.println(item.getName() + " - " + item.getCategory() + " - " + item.getLocation() + " - Quantity: " + item.getQuantity());
 
                 } else {
                     System.out.println("Item not found :( ");

@@ -4,11 +4,14 @@ public class Item {
     private String category;
     private String location;
 
-    public Item(String name, String category, String location) {
+    private int quantity;
+
+    public Item(String name, String category, String location, int quantity) {
 
         this.name = name;
         this.category = category;
         this.location = location;
+        this.quantity = quantity;
 
     }
 
@@ -22,6 +25,10 @@ public class Item {
 
     public String getLocation() {
         return location;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
 
